@@ -57,10 +57,7 @@ let AuthController = class AuthController {
                 password: user.password,
             };
             const { token, userId } = await this._authService.generateJwtToken(payload);
-            res.status(common_1.HttpStatus.CREATED).json({ user, token, userId });
-            res
-                .status(common_1.HttpStatus.CREATED)
-                .json({ message: 'User registered successfully' });
+            return res.status(common_1.HttpStatus.CREATED).json({ token, userId, user });
         }
         catch (error) {
             console.error('Registration failed:', error);
